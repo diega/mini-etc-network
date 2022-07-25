@@ -1,0 +1,10 @@
+{
+  "config": {
+    "chainID": 12345,
+    "mystiqueBlock": 0,
+    "ethash": {}
+  },
+  "difficulty": "0x20000",
+  "gasLimit": "0x7A1200",
+  "alloc": {}
+}

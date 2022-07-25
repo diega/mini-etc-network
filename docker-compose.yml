@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  geth-1:
+    build:
+      context: ./core-geth
+    command: >
+      --networkid=12345
+      --nodekeyhex='e3ddea7dbb0d79a38f4644054012f9bf236daf7e103711a5e3fd93f63aa6a371'
+      --mine
+      --miner.threads=1
+      --miner.etherbase='0xCAa4B6f8BE4109164D08701864Ef539B8d1e35b0'
+      --nat=extip:172.24.2.3
+    expose:
+      - "30303"
+    networks:
+      chain:
+        ipv4_address: "172.24.2.3"
+  besu-1:
+    image: hyperledger/besu:22.4.4
+    command: >
+      --network-id=12345
+      --genesis-file=/genesis.json
+      --bootnodes=enode://4de0758c04ad8a8804921ec1bbfa7d5b9a486e0b5e2e24d733d84ad75e02f1c7fd7df3633a9f98da27ffcf314151e677905529dbe0e3e7b417d8216cfec686b0@172.24.2.3:30303
+      --p2p-host=172.24.2.2
+#      --logging=DEBUG
+    volumes:
+      - ./besu/genesis.json:/genesis.json
+    expose:
+      - "30303"
+    networks:
+      chain:
+        ipv4_address: "172.24.2.2"
+  
+networks:
+  chain:
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.24.2.0/24

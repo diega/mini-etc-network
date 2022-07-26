@@ -10,7 +10,7 @@
         "eip155Block": 0,
         "eip158Block": 0,
         "istanbulBlock": 0,
-        "berlinBlock": 0,
+        "mystiqueBlock": 0,
         "ethash": {},
         "trustedCheckpoint": null,
         "trustedCheckpointOracle": null

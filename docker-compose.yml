@@ -10,11 +10,14 @@ services:
       --miner.threads=1
       --miner.etherbase='0xCAa4B6f8BE4109164D08701864Ef539B8d1e35b0'
       --nat=extip:172.24.2.3
+      --ethash.dagdir=/tmp/geth-dag
     expose:
       - "30303"
     networks:
       chain:
         ipv4_address: "172.24.2.3"
+    volumes:
+      - /tmp/geth-dag:/tmp/geth-dag
   besu-1:
     image: hyperledger/besu:22.4.4
     command: >

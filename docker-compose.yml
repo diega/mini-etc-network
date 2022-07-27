@@ -17,7 +17,7 @@ services:
       chain:
         ipv4_address: "172.24.2.3"
     volumes:
-      - /tmp/geth-dag:/tmp/geth-dag
+      - ./dag-dir:/tmp/geth-dag
   besu-1:
     image: hyperledger/besu:22.4.4
     command: >

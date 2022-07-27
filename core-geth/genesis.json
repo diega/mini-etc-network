@@ -1,5 +1,6 @@
 {
   "config": {
+    "networkId": 12345,
     "chainId": 12345,
     "eip2FBlock": 0,
     "eip7FBlock": 0,

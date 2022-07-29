@@ -19,7 +19,7 @@ services:
     volumes:
       - ./dag-dir:/tmp/geth-dag
   besu-1:
-    image: hyperledger/besu:22.4.4
+    image: "hyperledger/besu:22.4.4"
     command: >
       --network-id=12345
       --genesis-file=/genesis.json

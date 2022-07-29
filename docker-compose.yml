@@ -11,6 +11,9 @@ services:
       --miner.etherbase='0xCAa4B6f8BE4109164D08701864Ef539B8d1e35b0'
       --nat=extip:172.24.2.3
       --ethash.dagdir=/tmp/geth-dag
+      --netrestrict='172.24.2.0/24'
+      --discovery.dns=''
+      --bootnodes=''
     expose:
       - "30303"
     networks:

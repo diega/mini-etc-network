@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  geth-1:
+  geth-miner:
     build:
       context: ./core-geth
     command: >
@@ -11,6 +11,9 @@ services:
       --miner.etherbase='0xCAa4B6f8BE4109164D08701864Ef539B8d1e35b0'
       --nat=extip:172.24.2.3
       --ethash.dagdir=/tmp/geth-dag
+      --netrestrict='172.24.2.0/24'
+      --discovery.dns=''
+      --bootnodes=''
     expose:
       - "30303"
     networks:
@@ -19,12 +22,15 @@ services:
     volumes:
       - ./dag-dir:/tmp/geth-dag
   besu-1:
-    image: hyperledger/besu:22.4.4
+    image: "hyperledger/besu:22.4.4"
     command: >
       --network-id=12345
       --genesis-file=/genesis.json
       --bootnodes=enode://4de0758c04ad8a8804921ec1bbfa7d5b9a486e0b5e2e24d733d84ad75e02f1c7fd7df3633a9f98da27ffcf314151e677905529dbe0e3e7b417d8216cfec686b0@172.24.2.3:30303
       --p2p-host=172.24.2.2
+      --metrics-push-enabled
+      --metrics-push-port=9091
+      --metrics-push-host=prometheus-push-gateway
 #      --logging=DEBUG
     volumes:
       - ./besu/genesis.json:/genesis.json
@@ -33,7 +39,19 @@ services:
     networks:
       chain:
         ipv4_address: "172.24.2.2"
-  
+      default:
+  prometheus-push-gateway:
+    image: "prom/pushgateway:v1.4.3"
+    command: "--web.listen-address=0.0.0.0:9091"
+    expose:
+      - "9091"
+  prometheus:
+    image: "prom/prometheus:v2.37.0"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
 networks:
   chain:
     internal: true

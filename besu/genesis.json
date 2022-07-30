@@ -1,10 +1,31 @@
 {
-  "config": {
-    "chainID": 12345,
-    "mystiqueBlock": 0,
-    "ethash": {}
-  },
-  "difficulty": "0x20000",
-  "gasLimit": "0x7A1200",
-  "alloc": {}
+    "config": {
+        "chainId": 12345,
+        "supportedProtocolVersions": [
+            66
+        ],
+        "homesteadBlock": 0,
+        "eip150Block": 0,
+        "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "eip155Block": 0,
+        "eip158Block": 0,
+        "byzantiumBlock": 0,
+        "istanbulBlock": 0,
+        "mystiqueBlock": 0,
+        "ethash": {},
+        "trustedCheckpoint": null,
+        "trustedCheckpointOracle": null
+    },
+    "nonce": "0x0",
+    "timestamp": "0x62dffe24",
+    "extraData": "0x80686f656e697820636869636b656e206162737572642062616e616e61",
+    "gasLimit": "0x2fefd8",
+    "difficulty": "0x20000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "coinbase": "0x0000000000000000000000000000000000000000",
+    "alloc": null,
+    "number": "0x0",
+    "gasUsed": "0x0",
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "baseFeePerGas": null
 }

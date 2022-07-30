@@ -2,6 +2,9 @@
   "config": {
     "networkId": 12345,
     "chainId": 12345,
+    "supportedProtocolVersions": [
+      66
+    ],
     "eip2FBlock": 0,
     "eip7FBlock": 0,
     "eip150Block": 0,
@@ -37,9 +40,20 @@
     "eip3541FBlock": 0,
     "eip3529FBlock": 0,
     "disposalBlock": null,
-    "ethash": {}
+    "ethash": {},
+    "requireBlockHashes": {}
   },
+  "nonce": "0x0",
+  "timestamp": "0x62dffe24",
+  "extraData": "0x80686f656e697820636869636b656e206162737572642062616e616e61",
+  "gasLimit": "0x2fefd8",
   "difficulty": "0x20000",
-  "gasLimit": "0x7A1200",
-  "alloc": {}
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {},
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": null
 }
+

@@ -31,7 +31,6 @@ services:
       --metrics-push-enabled
       --metrics-push-port=9091
       --metrics-push-host=prometheus-push-gateway
-#      --logging=DEBUG
     volumes:
       - ./besu/genesis.json:/genesis.json
     expose:

@@ -29,9 +29,9 @@ services:
       --bootnodes=enode://4de0758c04ad8a8804921ec1bbfa7d5b9a486e0b5e2e24d733d84ad75e02f1c7fd7df3633a9f98da27ffcf314151e677905529dbe0e3e7b417d8216cfec686b0@172.24.2.3:30303
       --p2p-host=172.24.2.2
       --metrics-push-enabled
+      --metrics-push-prometheus-job=besu-1
       --metrics-push-port=9091
       --metrics-push-host=prometheus-push-gateway
-#      --logging=DEBUG
     volumes:
       - ./besu/genesis.json:/genesis.json
     expose:
@@ -49,9 +49,18 @@ services:
     image: "prom/prometheus:v2.37.0"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    expose:
+      - "9090"
+  grafana:
+    image: "grafana/grafana-oss:9.0.5"
+    volumes:
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
     ports:
-      - "9090:9090"
-
+      - "3000:3000"
+    depends_on:
+      - prometheus
 networks:
   chain:
     internal: true
